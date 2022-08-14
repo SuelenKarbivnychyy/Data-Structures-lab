@@ -15,15 +15,24 @@ def all_species(filename):
 
     # TODO: replace this with your code
 
-    villager_records = open(filename)
-    for line in villager_records:
-        separate_line = line.split("|")        
-        unique_species_index = separate_line[1]
-        species.add(unique_species_index) 
-        
-    return species
+    #pseudocode:
+    #open the file
+    #iterate through each line of file
+    #split the string at the given separater
+    #set the element species to a variable
+    #add the species to the set
+    #return the set
+    #call the function
 
-# print(all_species("villagers.csv"))
+    villager_records = open(filename) #opening the file
+    for line in villager_records: #iterate through the file
+        separate_line = line.split("|")   #split the string at the given separater     
+        unique_species_index = separate_line[1] #getting the species element index
+        species.add(unique_species_index)  #adding the species to the set
+        
+    return species #returning the set
+
+# print(all_species("villagers.csv")) #calling the function
 
 
 def get_villagers_by_species(filename, search_string="All"):
@@ -40,16 +49,30 @@ def get_villagers_by_species(filename, search_string="All"):
 
     # TODO: replace this with your code
 
-    villagers_name = open(filename)
-    for line in villagers_name:
-        element = line.split("|")
-        name = element[0]
-        species = element[1]
-        if search_string == "All":
-            villagers.append(name)
-        elif species == search_string:
-            villagers.append(name)   
-    return sorted(villagers)
+    #pseudocode:
+    #open the file
+    #iterate through each line of file
+    #split the string at the given separater
+    #set the element name to a variable
+    #set the element species to a variable
+    #check if the species argument is omitted, if true append all the villager's name to the empty list
+    #if the are a given specien, append the name of those species to the empty list
+    #return sorted list
+    #call the function
+
+    villagers_name = open(filename) #opening the file
+
+    for line in villagers_name: #iterate through the file
+        element = line.split("|") #spliting the string bu the delimiter
+        name = element[0] #saving the name of villagers to a variable
+        species = element[1] #saving the species index to a variable
+
+        if search_string == "All": #checking if the species passed is omited
+            villagers.append(name) #if omitted append all the villagers name
+        elif species == search_string: #checking if specie match do the given_specie
+            villagers.append(name)    #append the species name if true
+
+    return sorted(villagers) #sorting and returning the list
 
 # print(get_villagers_by_species("villagers.csv", "Tiger"))   
 
