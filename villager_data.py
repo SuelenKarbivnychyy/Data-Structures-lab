@@ -210,10 +210,10 @@ def find_motto(filename, villager_name):
             if elements[0] == villager_name: # checking if element name is equal to given name
                 return villager_name #returning name if true
     
-        return "None" returning none otherwise
+        return "None" #returning none otherwise
 
 look_for_motto = find_motto("villagers.csv", "motto") #saving the function call to an variable
-print(look_for_motto)    #calling the function   
+# print(look_for_motto)    #calling the function   
 
 
 
@@ -240,3 +240,49 @@ def find_likeminded_villagers(filename, villager_name):
     """
 
     # TODO: replace this with your code
+
+    #pseudocode: 
+    #define an empty set
+    #open the file
+    #iterate over the file and read the lines
+    #split the string at the given separator and save it to a new variable
+
+    # findi given village personality
+    #iterate through each line 
+    #check if element index name is qual to given name
+    #if is equal to given name save the pesonality to a variable
+    
+    
+    #check if element at index personalit is the same as the given villager
+    #append the element at index name to the empty set
+    #return the set
+    #call the function
+
+    villagers_with_equallity_personality = set()
+    # print(villagers_with_equallity_personality)
+    with open(filename) as villagers_informations:
+
+        for line in villagers_informations.readlines():
+            elements = line.split("|")
+            personality = elements[2]
+            name = elements[0]
+            # print(name)
+
+            if name == villager_name:
+                personality_to_compare = personality
+                # print(personality_to_compare)     
+               
+        villagers_informations.seek(0)
+        for line in villagers_informations.readlines():
+            elements = line.split("|")
+            personality = elements[2]                     
+            
+            if personality_to_compare == personality:
+                villagers_with_equallity_personality.add(elements[0])
+
+        return villagers_with_equallity_personality         
+      
+
+find_similarities = find_likeminded_villagers("villagers.csv", "Wendy")              
+print(find_similarities)
+
