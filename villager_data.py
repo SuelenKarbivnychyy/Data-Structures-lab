@@ -70,7 +70,7 @@ def all_names_by_hobby(filename):
     # TODO: replace this with your code
 
 #pseudocode:
-#create an list and inside of it create the same aumont of empty list according to the number of hobbys?
+#create an list and inside of it create the same aumont of empty list according to the number of hobbys.
 #open the file
 #iterate over the list
 #separate each element of the string in the given delimiter
@@ -90,18 +90,17 @@ def all_names_by_hobby(filename):
 #print every element in separate line (Print every list element separated by newline) 
 
 
+    vilagers_names_by_hobbys = [[], [], [], [], [], []]   #declared a list that takes in empty lists to hold the names by hobby.
+    hobby_file = open(filename) #opening the file ans saving to a variable.
 
-    vilagers_names_by_hobbys = [[], [], [], [], [], []]   
-    hobby_file = open(filename)
-
-    for line in hobby_file:
-        elements = line.split("|")
-        name = elements[0]
-        hobby = elements[3]
-        # print(hobby)
-        if hobby == "Fitness":
-            vilagers_names_by_hobbys[0].append(name)
-    # print(vilagers_names_by_hobbys) 
+    for line in hobby_file: # iterating through the file.
+        elements = line.split("|") #splitting each element in the line at the given separater.
+        name = elements[0] #saving the element name to avariable.
+        hobby = elements[3] #saving the element hobby to a variable.
+        # print(hobby) #testing the code I have so far.
+        if hobby == "Fitness": # this block of code is checking the hobbys and append the villagers name to them specific hobby list.
+            vilagers_names_by_hobbys[0].append(name) #appending the owner hobby's name to them specific list.
+    # print(vilagers_names_by_hobbys) #testing
         if hobby == "Nature":
             vilagers_names_by_hobbys[1].append(name)
         if hobby == "Education":
@@ -113,13 +112,13 @@ def all_names_by_hobby(filename):
         if hobby == "Play":
             vilagers_names_by_hobbys[5].append(name)  
 
-    for group_hobby in vilagers_names_by_hobbys:
-        group_hobby.sort()               
+    for group_hobby in vilagers_names_by_hobbys: #checking each child list from parent list.
+        group_hobby.sort()               #sorting the child list in alphabetic order in place.
 
-    return vilagers_names_by_hobbys
+    return vilagers_names_by_hobbys #returning parent list with all the villagers names on it.
 
-group_hobbys = all_names_by_hobby("villagers.csv")
-print(group_hobbys)
+group_hobbys = all_names_by_hobby("villagers.csv") #assignin the function call to a variable 
+# print(group_hobbys) #calling the function
 
 # for group_hobby in group_hobbys:  #testing the code printing every list element separated by newline.
 #     #group_hobby.sort()
@@ -144,11 +143,41 @@ def all_data(filename):
         - list[tuple[str]]: a list of tuples containing strings
     """
 
-    all_data = []
-
     # TODO: replace this with your code
 
-    return all_data
+#pseudocode :
+#create an empty list
+#open the file
+#iterate through the file
+#split the string at the given separater and save it to a variable
+#save each line as a tuple
+#append each tuple to the empty list
+#return the  list with the tuple in it.   
+
+    all_data_in_the_file = [] #defining an empty listo to hold all the tupes
+    with open(filename) as villagers_data: #openning the file and saving it to a variable
+
+        for line in villagers_data.readlines(): #reading each file's line       
+            line = line.replace("\n", "") #the original had this line breaker that we don't need / want to our list, so I just replaced it.
+            elements = line.split("|") #spliting each line of string on the given delimiter
+            each_line_as_tuple = tuple(elements) #saving each line as tuple
+            # print(each_line_as_tuple) #testing the code so far
+            all_data_in_the_file.append(each_line_as_tuple) #appending each line as tuple to the list
+        # print(all_data_in_the_file)  #testing
+
+    return all_data_in_the_file # returning the list of tuples
+
+all_data_function = all_data("villagers.csv") #storing the function call to a variable
+# print(all_data_function) #calling the function
+
+
+
+
+
+
+
+
+
 
 
 def find_motto(filename, villager_name):
