@@ -220,10 +220,6 @@ look_for_motto = find_motto("villagers.csv", "motto") #saving the function call 
 
 
 
-
-
-
-
 def find_likeminded_villagers(filename, villager_name):
     """Return a set of villagers with the same personality as the given villager.
 
@@ -245,44 +241,48 @@ def find_likeminded_villagers(filename, villager_name):
     #define an empty set
     #open the file
     #iterate over the file and read the lines
-    #split the string at the given separator and save it to a new variable
+    #split the string at the given separator and save it to a new variable  
+    #save the element related to personaly in a variable
+    #save the element related to name to a variable
 
-    # findi given village personality
-    #iterate through each line 
+    #find given village personality:
     #check if element index name is qual to given name
-    #if is equal to given name save the pesonality to a variable
+    #if it's true save the pesonality on that element to a variable
     
-    
+    #checking for same personalit:
+    #Iterate throuth the file again
+    #split the strings and save the element personality to a variable.
     #check if element at index personalit is the same as the given villager
-    #append the element at index name to the empty set
+    #if true, add the element at index name to the empty set
     #return the set
     #call the function
 
-    villagers_with_equallity_personality = set()
-    # print(villagers_with_equallity_personality)
-    with open(filename) as villagers_informations:
+ 
 
-        for line in villagers_informations.readlines():
-            elements = line.split("|")
-            personality = elements[2]
-            name = elements[0]
-            # print(name)
+    villagers_with_equallity_personality = set() #creating a empty set
+    # print(villagers_with_equallity_personality) #testing
+    with open(filename) as villagers_informations: # opening the file as new variable
 
-            if name == villager_name:
-                personality_to_compare = personality
-                # print(personality_to_compare)     
+        for line in villagers_informations.readlines(): #iterating over the file and reading the lines
+            elements = line.split("|") # spliting the string at the given delimiter
+            personality = elements[2] #setting personalit element to a variable
+            name = elements[0] # setting element name to a variable
+            # print(name) #testing
+
+            if name == villager_name: #finding the given name in our list of names
+                personality_to_compare = personality #storing the personality of given_name to a variable
+                # print(personality_to_compare)      #testing
                
-        villagers_informations.seek(0)
-        for line in villagers_informations.readlines():
-            elements = line.split("|")
-            personality = elements[2]                     
+        villagers_informations.seek(0) #reeset the file from the very begining to be able to read again
+        for line in villagers_informations.readlines(): #iterating over the file an reading
+            elements = line.split("|") #spliting at the given separator
+            personality = elements[2]                     #saving the element personalit to a variable
             
-            if personality_to_compare == personality:
-                villagers_with_equallity_personality.add(elements[0])
+            if personality_to_compare == personality: #checking if the given_name's personalit is compatible to the personalit element from file
+                villagers_with_equallity_personality.add(elements[0]) #adding the villagers name with same personality as given_name to the set
 
-        return villagers_with_equallity_personality         
+        return villagers_with_equallity_personality      #returning set
       
-
-find_similarities = find_likeminded_villagers("villagers.csv", "Wendy")              
-print(find_similarities)
+find_similarities = find_likeminded_villagers("villagers.csv", "Wendy")   #assiging function call to a new variable           
+print(find_similarities) #calling function
 
