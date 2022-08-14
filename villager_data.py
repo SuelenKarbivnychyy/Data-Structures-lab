@@ -177,9 +177,6 @@ all_data_function = all_data("villagers.csv") #storing the function call to a va
 
 
 
-
-
-
 def find_motto(filename, villager_name):
     """Return the villager's motto.
 
@@ -195,6 +192,36 @@ def find_motto(filename, villager_name):
     """
 
     # TODO: replace this with your code
+
+    #pseudocode:
+    #open the file
+    #iterate through each line end read it
+    #split the string at the given separater and save it to a variable
+    #check if the element name is qual to given name
+    #if true, returns its name
+    #return none otherwise
+    #call the function
+
+    with open(filename) as file_villagers_informations:      #Opening the file and saving to a variable
+
+        for line in file_villagers_informations.readlines(): #iterating over each line and reading it        
+            elements = line.split("|") #spliting each line string in the given separator
+
+            if elements[0] == villager_name: # checking if element name is equal to given name
+                return villager_name #returning name if true
+    
+        return "None" returning none otherwise
+
+look_for_motto = find_motto("villagers.csv", "motto") #saving the function call to an variable
+print(look_for_motto)    #calling the function   
+
+
+
+
+
+
+
+
 
 
 def find_likeminded_villagers(filename, villager_name):
