@@ -48,16 +48,10 @@ def get_villagers_by_species(filename, search_string="All"):
         if search_string == "All":
             villagers.append(name)
         elif species == search_string:
-            villagers.append(name)      
-        # print(species)
-        # if species == search_string:
-        #     # print(name)
-        #     villagers.append(name)
-        # elif 
-        #     villagers.append(name)       
+            villagers.append(name)   
     return sorted(villagers)
 
-print(get_villagers_by_species("villagers.csv", "Tiger"))   
+# print(get_villagers_by_species("villagers.csv", "Tiger"))   
 
 
 
@@ -75,22 +69,66 @@ def all_names_by_hobby(filename):
 
     # TODO: replace this with your code
 
-    hobbys = ["Fitness", "Nature", "Education", "Music", "Fashion", "Play"]
-    group_hobby = []
+#pseudocode:
+#create an list and inside of it create the same aumont of empty list according to the number of hobbys?
+#open the file
+#iterate over the list
+#separate each element of the string in the given delimiter
+#save the villager's name index to a variable
+#save the villager's hobby index to a variable
+#check which vilagers has the specific hobby and append it to the specific list
+#return the empyt list you first created "but now is not empty anymore"
 
+
+#sorting by alphabetic order:
+#iteraght through the each element at the list
+#sort each list in alphabetic order
+
+#testing the function
+#assign the function call to a variable (Store information about names group by hobby into a list)
+#iterate through the function call (Iterate through list from above)
+#print every element in separate line (Print every list element separated by newline) 
+
+
+
+    vilagers_names_by_hobbys = [[], [], [], [], [], []]   
     hobby_file = open(filename)
+
     for line in hobby_file:
         elements = line.split("|")
         name = elements[0]
         hobby = elements[3]
         # print(hobby)
         if hobby == "Fitness":
-            group_hobby.append(name)
-    # print(group_hobby) 
+            vilagers_names_by_hobbys[0].append(name)
+    # print(vilagers_names_by_hobbys) 
         if hobby == "Nature":
-            group_hobby.append(name)
-    return [group_hobby]
-# print(all_names_by_hobby("villagers.csv"))    
+            vilagers_names_by_hobbys[1].append(name)
+        if hobby == "Education":
+            vilagers_names_by_hobbys[2].append(name)    
+        if hobby == "Music":
+            vilagers_names_by_hobbys[3].append(name)   
+        if hobby == "Fashion":
+            vilagers_names_by_hobbys[4].append(name)   
+        if hobby == "Play":
+            vilagers_names_by_hobbys[5].append(name)  
+
+    for group_hobby in vilagers_names_by_hobbys:
+        group_hobby.sort()               
+
+    return vilagers_names_by_hobbys
+
+group_hobbys = all_names_by_hobby("villagers.csv")
+print(group_hobbys)
+
+# for group_hobby in group_hobbys:  #testing the code printing every list element separated by newline.
+#     #group_hobby.sort()
+#     print(group_hobby)
+#     print()
+
+
+
+ 
 
 
 def all_data(filename):
