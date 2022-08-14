@@ -47,12 +47,13 @@ def get_villagers_by_species(filename, search_string="All"):
         species = element[1]
         # print(species)
         if species == "tiger":
-            villagers.append(name[0])
+            print("yes")
+            # villagers.append(name[0])
         else:
             villagers.append(name)       
     return sorted(villagers)
 
-print(get_villagers_by_species("villagers.csv", search_string="tiger"))   
+# print(get_villagers_by_species("villagers.csv", "tiger"))   
 
 
 
@@ -70,7 +71,22 @@ def all_names_by_hobby(filename):
 
     # TODO: replace this with your code
 
-    return []
+    hobbys = ["Fitness", "Nature", "Education", "Music", "Fashion", "Play"]
+    group_hobby = []
+
+    hobby_file = open(filename)
+    for line in hobby_file:
+        elements = line.split("|")
+        name = elements[0]
+        hobby = elements[3]
+        # print(hobby)
+        if hobby == "Fitness":
+            group_hobby.append(name)
+    # print(group_hobby) 
+        if hobby == "Nature":
+            group_hobby.append(name)
+    return [group_hobby]
+print(all_names_by_hobby("villagers.csv"))    
 
 
 def all_data(filename):
